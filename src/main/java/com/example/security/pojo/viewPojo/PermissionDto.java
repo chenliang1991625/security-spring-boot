@@ -1,4 +1,4 @@
-package com.example.security.pojo;
+package com.example.security.pojo.viewPojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,10 +11,9 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain =true)
-public class UserDto {
+public class PermissionDto {
     private String id;
-    private String username;
-    private String password;
-    private String fullname;
-    private String mobile;
+    private String code;
+    private String description;
+    private String url;
 }

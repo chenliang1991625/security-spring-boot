@@ -1,4 +1,4 @@
-package com.example.security.pojo;
+package com.example.security.pojo.securityPojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +7,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain =true)
-public class T_permission {
-   private String id ;
-   private String code ;
-   private String descriptio;
-   private String  ur;
+public class T_role_permission {
+    private String role_id ;
+    private String permission_id;
 }
