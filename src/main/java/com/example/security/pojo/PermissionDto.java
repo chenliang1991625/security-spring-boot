@@ -1,10 +1,8 @@
 package com.example.security.pojo;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-
 /**
  * @author Administrator
  * @version 1.0
@@ -14,7 +12,6 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Accessors(chain =true)
 public class PermissionDto {
-
     private String id;
     private String code;
     private String description;

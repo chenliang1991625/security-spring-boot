@@ -4,7 +4,8 @@
     <title>用户登录</title>
 </head>
 <body>
-<form action="login" method="post">
+<%--action中的路径不能加/--%>
+<form action="login-success" method="post">
     用户名：<input type="text" name="username"><br>
     密&nbsp;&nbsp;&nbsp;码:
     <input type="password" name="password"><br>

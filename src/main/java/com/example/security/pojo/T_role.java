@@ -1,13 +1,9 @@
 package com.example.security.pojo;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-
 import java.util.Date;
-
 /*//1.角色表
         CREATE TABLE t_role (
         id varchar(32) NOT NULL,

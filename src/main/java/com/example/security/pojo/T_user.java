@@ -1,10 +1,8 @@
 package com.example.security.pojo;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-
 /*
 * //5. 创建t_user表
         CREATE TABLE `t_user` (

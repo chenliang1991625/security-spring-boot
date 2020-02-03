@@ -1,5 +1,4 @@
 package com.example.security.config;
-
 import com.example.security.securityspringboot.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 @Configuration
 //@EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)//允许在具体方法上设置访问该方法的权限
@@ -22,9 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         manager.createUser(User.withUsername("zhangsan").password("123").authorities("p1").build());
         manager.createUser(User.withUsername("lisi").password("456").authorities("p2").build());
         return manager;
-
     }*/
-
     /*@Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
@@ -35,8 +31,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-
     //安全拦截机制（最重要）
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -46,13 +40,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/r/r2").hasAuthority("p2")//想办法从springSecurity登录页面数据查询用户权限填在这里,这种想法不对，
 //                因为运行空指针异常(到登录页面前先要经过这里拦截)；登录认证后spring security会自动从数据库查询权限进行授权
 //                .antMatchers(getUrl()).hasAnyAuthority(getCodes())
-                .antMatchers("/r/**").authenticated()//所有/r/**的请求必须认证通过
+                .antMatchers("/r/**").authenticated()//所有/r/**的请求必须认证通过才能访问
                 .anyRequest().permitAll()//除了/r/**，其它的请求可以访问
                 .and()
                 .formLogin()//允许表单登录
-                .loginPage("/login-view")//设置springSecurity的登录页面控制器
-                .loginProcessingUrl("/login")//设置springSecurity的登录展示页面为login.jsp
-                .successForwardUrl("/login-success")//自定义登录成功的controller处理地址(即登录成功进入哪个controller的哪个方法处理)
+                .loginPage("/login")//设置springSecurity的登录页面路径
+                .loginProcessingUrl("/login-success")//自定义登录成功的controller处理地址(即登录成功进入哪个controller的哪个方法处理)
+                .successForwardUrl("/login-success")//自定义登录成功的controller跳转到的处理地址(即登录成功进入哪个controller的哪个方法处理)
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
@@ -60,8 +54,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")//设置springSecurity退出的地址
                 .logoutSuccessUrl("/login-view?logout");//设置springSecurity退出后进入的页面地址(退出后来到到登录页面)
-                        
-
     }
 //然后在实现了WebSecurityConfigurerAdapter类的WebSecurityConfig中的configure方法（具体方法名可能因人而异）中加入“.passwordEncoder(new BCryptPasswordEncoder())”，相当于是将前端传过来的密码进行加密处理，再与数据库中加密过的密码进行比对。
    /* protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -116,6 +108,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           urlList.add(ur);
           String code = permissionList.getCode();
           codeList.add(code);
-
       }*/
 }
