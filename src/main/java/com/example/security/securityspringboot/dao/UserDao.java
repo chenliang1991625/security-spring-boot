@@ -1,6 +1,6 @@
 package com.example.security.securityspringboot.dao;
-import com.example.security.pojo.securityPojo.T_permission;
-import com.example.security.pojo.securityPojo.T_user;
+import com.example.security.pojo.T_permission;
+import com.example.security.pojo.T_user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -1,6 +1,6 @@
 package com.example.security.securityspringboot.service;
-import com.example.security.pojo.securityPojo.T_permission;
-import com.example.security.pojo.securityPojo.T_user;
+import com.example.security.pojo.T_permission;
+import com.example.security.pojo.T_user;
 import com.example.security.securityspringboot.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;

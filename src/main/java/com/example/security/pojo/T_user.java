@@ -1,4 +1,4 @@
-package com.example.security.pojo.securityPojo;
+package com.example.security.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
