@@ -1,6 +1,10 @@
 package com.example.security.securityspringboot.service;
-import com.example.security.pojo.User;
+import com.example.security.pojo.T_user;
+import com.github.pagehelper.Page;
+
 import java.util.List;
+import java.util.Map;
+
 /**
  * @Author: 陈亮
  * @Description:
@@ -10,20 +14,19 @@ public interface UserService {
     /*
      *根据条件字段uid获取记录数
      */
- Long getCountByUid(User user);
+ Long getCountByUid(T_user user);
     /*
      *根据条件字段password获取记录数
      */
- Long getCountByPassword(User user);
+ Long getCountByPassword(T_user user);
     /*
      *根据条件字段mobile获取记录数
      */
- Long getCountByMobile(User user);
+ Long getCountByMobile(T_user user);
     /*
      *根据条件字段username获取记录数
      */
- Long getCountByUsername(User user);
-
+ Long getCountByUsername(T_user user);
     /*
      *根据uid删除
      */
@@ -40,7 +43,6 @@ public interface UserService {
      *根据username删除
      */
     int deleteByUsername(String username);
-
     /*
      *根据主键uid删除
      */
@@ -48,77 +50,81 @@ public interface UserService {
     /*
      *保存用户
      */
-    int insert(User user);
+    int insert(T_user user);
     /*
      *保存用户:精确保存想要的字段
      */
-    int insertAllColumn(User user);
+    int insertAllColumn(T_user user);
     /*
      * 根据条件(实体类属性值Uid)查询
      */
-    List<User> selectListByUid(User user);
+    List<T_user> selectListByUid(T_user user);
     /*
      * 根据条件(实体类属性值Password)查询
      */
-    List<User> selectListByPassword(User user);
+    List<T_user> selectListByPassword(T_user user);
     /*
      * 根据条件(实体类属性值Mobile)查询
      */
-    List<User> selectListByMobile(User user);
+    List<T_user> selectListByMobile(T_user user);
     /*
      * 根据条件(实体类属性值Username)查询
      */
-    List<User> selectListByUsername(User user);
-
+    List<T_user> selectListByUsername(T_user user);
     /*
      * 根据主键uid查询
      */
-    User findByUid(Integer uid);
+    T_user findByUid(Integer uid);
     /*
      * 根据(实体类属性值uid)精确更新
      */
-    int updateByUid(User user, Integer uid);
+    int updateByUid(T_user user, Integer uid);
     /*
      * 根据(实体类属性值password)精确更新
      */
-    int updateByPassword(User user, String password);
+    int updateByPassword(T_user user, String password);
     /*
      * 根据(实体类属性值mobile)精确更新
      */
-    int updateByMobile(User user, String mobile);
+    int updateByMobile(T_user user, String mobile);
     /*
      * 根据(实体类属性值username)精确更新
      */
-    int updateByUsername(User user, String username);
-
+    int updateByUsername(T_user user, String username);
     /*
      * 根据(实体类属性值uid)更新
      */
-    int updateAllColumnByUid(User user, Integer uid);
+    int updateAllColumnByUid(T_user user, Integer uid);
     /*
      * 根据(实体类属性值password)更新
      */
-    int updateAllColumnByPassword(User user, String password);
+    int updateAllColumnByPassword(T_user user, String password);
     /*
      * 根据(实体类属性值mobile)更新
      */
-    int updateAllColumnByMobile(User user, String mobile);
+    int updateAllColumnByMobile(T_user user, String mobile);
     /*
      * 根据(实体类属性值username)更新
      */
-    int updateAllColumnByUsername(User user, String username);
-
+    int updateAllColumnByUsername(T_user user, String username);
     /*
      * 根据主键uid更新部分想要的字段
      */
-    int updateByKey(User user);
+    int updateByKey(T_user user);
     /*
      * 根据主键uid更新全部字段
      */
-    int updateAllColumnByKey(User user);
+    int updateAllColumnByKey(T_user user);
     /*
      * 查出所有user信息
      */
-    List<User> list();
-
+    List<T_user> list();
+    /*
+     * 条件+分页查询
+     */
+   Page<T_user> findPage(int page, int size);
+   /*
+    * 分页查询
+    */
+   Page<T_user> findPage(Map<String,Object> searchMap, int page, int size);
 }

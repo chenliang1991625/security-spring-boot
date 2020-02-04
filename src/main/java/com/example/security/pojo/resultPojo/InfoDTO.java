@@ -1,9 +1,9 @@
-package com.example.security.pojo;
+package com.example.security.pojo.resultPojo;
 import java.util.HashMap;
 import java.util.Map;
 /**
  * @Author: 陈亮
- * @Description: 数据传输对象
+ * @Description: 通用返回结果实体类2:数据传输对象,此案例没有使用到,若要使用,根据自己要求修改后使用(创建一个类再封装Controller的返回值或者修改Controller每个方法的返回值类型)
  * @Time: 2019/9/19 星期四 21:11
  **/
 public class InfoDTO {

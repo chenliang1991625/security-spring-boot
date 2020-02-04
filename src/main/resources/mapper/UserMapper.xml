@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.example.security.pojo.User">
+  <resultMap id="BaseResultMap" type="com.example.security.pojo.T_user">
     <constructor>
-      <idArg column="uid" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
 
       <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR"/>
 <arg column="mobile" javaType="java.lang.String" jdbcType="VARCHAR"/>
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    uid,uid
+    id
 ,password
 ,mobile
 ,username
@@ -82,7 +82,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from user
+    from t_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -91,45 +91,45 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
-    from user
-    where uid = #{uid,jdbcType=INTEGER}
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
-    where uid = #{uid,jdbcType=INTEGER}
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.example.security.pojo.UserExample">
-    delete from user
+    delete from t_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.security.pojo.User">
-    insert into user (uid,uid
+  <insert id="insert" parameterType="com.example.security.pojo.T_user">
+    insert into user (id
 ,password
 ,mobile
 ,username
 )
-    values (#{uid,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}
 , #{mobile,jdbcType=VARCHAR}
 , #{username,jdbcType=VARCHAR}
 )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.security.pojo.User">
+  <insert id="insertSelective" parameterType="com.example.security.pojo.T_user">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="uid != null">
-        uid, #{password,jdbcType=VARCHAR}
+      <if test="id != null">
+        id, #{password,jdbcType=VARCHAR}
 , #{mobile,jdbcType=VARCHAR}
 , #{username,jdbcType=VARCHAR}
 ,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="uid != null">
-        #{uid,jdbcType=INTEGER}                                           ,
+      <if test="id != null">
+        #{id,jdbcType=INTEGER}                                           ,
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR}
@@ -146,7 +146,7 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.example.security.pojo.UserExample" resultType="java.lang.Long">
-    select count(*) from user
+    select count(*) from t_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -154,8 +154,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update user
     <set>
-      <if test="record.uid != null">
-        uid = #{record.uid,jdbcType=INTEGER}                                                              ,
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER}                                                              ,
       </if>
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR}
@@ -175,8 +175,8 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update user
-    set uid = #{record.uid,jdbcType=INTEGER}                                                             ,
+    update t_user
+    set id = #{record.id,jdbcType=INTEGER}                                                             ,
       password = #{record.password,jdbcType=VARCHAR}
                                                              ,
       mobile = #{record.mobile,jdbcType=VARCHAR}
@@ -187,8 +187,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.security.pojo.User">
-    update user
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.security.pojo.T_user">
+    update t_user
     <set>
             <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
@@ -201,14 +201,14 @@
        </if>
 
     </set>
-    where uid = #{uid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.security.pojo.User">
-    update user
+  <update id="updateByPrimaryKey" parameterType="com.example.security.pojo.T_user">
+    update t_user
     set password = #{password,jdbcType=VARCHAR},
 mobile = #{mobile,jdbcType=VARCHAR},
 username = #{username,jdbcType=VARCHAR},
 
-    where uid = #{uid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

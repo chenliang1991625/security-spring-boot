@@ -3,6 +3,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+//角色和权限对应表
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

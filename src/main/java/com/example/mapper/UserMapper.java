@@ -1,13 +1,14 @@
 package com.example.mapper;
-import com.example.security.pojo.User;
+
+import com.example.security.pojo.T_user;
 import com.example.security.pojo.UserExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import tk.mybatis.mapper.common.MySqlMapper;
 import java.util.List;
-@Mapper
+//@Mapper
 @Repository
-public interface UserMapper/* extends tk.mybatis.mapper.common.Mapper<User>, MySqlMapper<User>*/ {
+public interface UserMapper extends tk.mybatis.mapper.common.Mapper<T_user>,MySqlMapper<T_user> {
     long countByExample(UserExample example);
     /*
      *根据条件(实体类属性值)删除
@@ -15,47 +16,47 @@ public interface UserMapper/* extends tk.mybatis.mapper.common.Mapper<User>, MyS
     int deleteByExample(UserExample example);
 
     /*
-     *根据主键uid删除
+     *根据主键id删除
      */
-    int deleteByPrimaryKey(Integer uid);
+//    int deleteByPrimaryKey(Integer id);
 
     /*
      *保存用户
      */
-    int insert(User user);
+    int insert(T_user user);
 
     /*
      *更新用户:精确插入用户
      */
-    int insertSelective(User user);
+    int insertSelective(T_user user);
 
     /*
      * 根据条件(实体类属性值)查询
      */
-    List<User> selectByExample(UserExample example);
+    List<T_user> selectByExample(UserExample example);
 
     /*
-     * 根据主键uid查询
+     * 根据主键id查询
      */
-    User selectByPrimaryKey(Integer uid);
+//    T_user selectByPrimaryKey(Integer id);
 
     /*
      * 根据(实体类属性值)精确更新：updateByExample()更新所有的字段，包括字段为null的也更新，建议使用 updateByExampleSelective()更新想更新的字段
      */
-    int updateByExampleSelective(@Param("user") User user, @Param("example") UserExample example);
+    int updateByExampleSelective(@Param("user") T_user user, @Param("example") UserExample example);
 
     /*
      * 根据(实体类属性值)更新：updateByExample()更新所有的字段，包括字段为null的也更新，建议使用 updateByExampleSelective()更新想更新的字段
      */
-    int updateByExample(@Param("user") User user, @Param("example") UserExample example);
+    int updateByExample(@Param("user") T_user user, @Param("example") UserExample example);
 
     /*
-     * 根据主键uid更新部分想要的字段
+     * 根据主键id更新部分想要的字段
      */
-    int updateByPrimaryKeySelective(User user);
+    int updateByPrimaryKeySelective(T_user user);
 
     /*
-     * 根据主键uid更新全部字段
+     * 根据主键id更新全部字段
      */
-    int updateByPrimaryKey(User user);
+//    int updateByPrimaryKey(T_user user);
 }

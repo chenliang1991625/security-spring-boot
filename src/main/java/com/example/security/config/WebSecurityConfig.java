@@ -40,7 +40,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/r/r2").hasAuthority("p2")//想办法从springSecurity登录页面数据查询用户权限填在这里,这种想法不对，
 //                因为运行空指针异常(到登录页面前先要经过这里拦截)；登录认证后spring security会自动从数据库查询权限进行授权
 //                .antMatchers(getUrl()).hasAnyAuthority(getCodes())
-                .antMatchers("/r/**").authenticated()//所有/r/**的请求必须认证通过才能访问
+//                .antMatchers("/r/**","/**/update*/**","/**/insert*/**","/**/delete*/**").authenticated()//所有/r/**,"/**/update*/**","/**/insert*/**"或"/**/delete*/**的请求必须认证通过才能访问，后面四项决定用户没有登录不能增删改,只能查询用户信息
+                .antMatchers("/r/**","/user/**").authenticated()//所有/r/**(测试LoginController),所有的/user/**(测试UserController,用户必须登录才能crud)的请求必须认证通过才能访问
                 .anyRequest().permitAll()//除了/r/**，其它的请求可以访问
                 .and()
                 .formLogin()//允许表单登录
@@ -53,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/logout")//设置springSecurity退出的地址
-                .logoutSuccessUrl("/login-view?logout");//设置springSecurity退出后进入的页面地址(退出后来到到登录页面)
+                .logoutSuccessUrl("/login?logout");//设置springSecurity退出后进入的页面地址(退出后来到到登录页面)
     }
 //然后在实现了WebSecurityConfigurerAdapter类的WebSecurityConfig中的configure方法（具体方法名可能因人而异）中加入“.passwordEncoder(new BCryptPasswordEncoder())”，相当于是将前端传过来的密码进行加密处理，再与数据库中加密过的密码进行比对。
    /* protected void configure(AuthenticationManagerBuilder auth) throws Exception {

@@ -4,17 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.Date;
-/*//1.角色表
-        CREATE TABLE t_role (
-        id varchar(32) NOT NULL,
-        role_name varchar(255) DEFAULT NULL,
-        description varchar(255) DEFAULT NULL,
-        create_time datetime DEFAULT NULL,
-        update_time datetime DEFAULT NULL,
-        status char(1) NOT NULL, PRIMARY KEY(id),
-         UNIQUE KEY unique_role_name (role_name) )ENGINE = InnoDB,
-        DEFAULT CHARSET = utf8 ;
-        insert into t_role (id, role_name, description, create_time, update_time, status)*/
+//角色表
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
