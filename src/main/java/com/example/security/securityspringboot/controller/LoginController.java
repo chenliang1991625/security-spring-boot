@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+//注意:T_user类对应的用户表不能查询,是不是真的无法查询,如果能查询怎么实现?
 @RestController
 @Api(value = "LoginController|一个用来测试swagger注解的控制器")//swagger在类上注解
 public class LoginController {

@@ -1,5 +1,4 @@
-package com.example.mapper;
-
+package com.example.security.mapper;
 import com.example.security.pojo.T_user;
 import com.example.security.pojo.UserExample;
 import org.apache.ibatis.annotations.Param;
@@ -18,7 +17,7 @@ public interface UserMapper extends tk.mybatis.mapper.common.Mapper<T_user>,MySq
     /*
      *根据主键id删除
      */
-//    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer id);
 
     /*
      *保存用户
@@ -38,7 +37,7 @@ public interface UserMapper extends tk.mybatis.mapper.common.Mapper<T_user>,MySq
     /*
      * 根据主键id查询
      */
-//    T_user selectByPrimaryKey(Integer id);
+    T_user selectByPrimaryKey(Integer id);
 
     /*
      * 根据(实体类属性值)精确更新：updateByExample()更新所有的字段，包括字段为null的也更新，建议使用 updateByExampleSelective()更新想更新的字段
@@ -58,5 +57,5 @@ public interface UserMapper extends tk.mybatis.mapper.common.Mapper<T_user>,MySq
     /*
      * 根据主键id更新全部字段
      */
-//    int updateByPrimaryKey(T_user user);
+    int updateByPrimaryKey(T_user user);
 }

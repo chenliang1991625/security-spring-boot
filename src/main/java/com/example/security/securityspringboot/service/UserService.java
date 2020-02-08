@@ -71,6 +71,10 @@ public interface UserService {
      * 根据条件(实体类属性值Username)查询
      */
     List<T_user> selectListByUsername(T_user user);
+   /*
+    * 根据条件(实体类属性值Username2)查询
+    */
+   List<T_user> selectListByUsername(Object conditionColumn);
     /*
      * 根据主键uid查询
      */

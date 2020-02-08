@@ -1,6 +1,6 @@
 package com.example.security.securityspringboot.service.impl;
 
-import com.example.mapper.UserMapper;
+import com.example.security.mapper.UserMapper;
 import com.example.security.pojo.T_user;
 import com.example.security.pojo.UserExample;
 import com.example.security.securityspringboot.service.UserService;
@@ -205,6 +205,17 @@ user1.setUsername(user.getUsername());
         example.setOrderByClause("id asc");//按id升序排列
 // example.setOrderByClause("username asc,id desc");
 //相当于：select * from user where username = 'wyw' and  username is null order by username asc,email desc
+        return userMapper.selectByExample(example);
+    }
+    /*
+     * 根据条件(实体类属性值Username2)查询
+     */
+    public List<T_user> selectListByUsername(Object  username){
+        UserExample example = new UserExample();
+        UserExample.Criteria criteria = example.createCriteria();
+        criteria.andUsernameEqualTo((String) username);
+        criteria.andUsernameIsNull();//username为空的也查出来
+        example.setOrderByClause("id asc");//按id升序排列
         return userMapper.selectByExample(example);
     }
     /*

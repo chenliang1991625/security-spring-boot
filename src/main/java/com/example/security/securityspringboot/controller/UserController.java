@@ -8,11 +8,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
-
 /**
  * @Author: 陈亮
  * @Description:
  * @Time: 2019/9/18 星期三 17:46
+ * 注意:T_user类对应的用户表不能查询,是不是真的无法查询,如果能查询怎么实现?
  **/
 @RestController
 @RequestMapping("/user")
@@ -128,7 +128,14 @@ public class UserController {
         return userService.selectListByUsername(user);
     }
     /*
-     * 根据主键id查询
+     * 根据条件(实体类username字段属性值)查询2
+     */
+    @GetMapping("/username/findList/{username}")
+    public List<T_user> selectListByT_username(@PathVariable String username) {
+        return userService.selectListByUsername(username);
+    }
+    /*
+     * 根据主键id查询:根据id主键不能查询用户信息,除非每列值都一样(那也没意义,没有这样无效无聊的用户)
      */
     @GetMapping("/id/{id}")
     public T_user get(@PathVariable Integer id) {

@@ -44,12 +44,23 @@ public T_user getUserByUsername(final String username) {
 */
     //根据用户id查询用户权限,此处用子查询,会拖慢系统性能,可优化
     public List<T_permission> findPermissionsByUserId(Integer userId) {
-        String sql = "SELECT * FROM t_permission WHERE id IN(\n" +
+       /* String sql = "SELECT * FROM t_permission WHERE id IN(\n" +
                 "\n" +
                 "SELECT permission_id FROM t_role_permission WHERE role_id IN(\n" +
                 "  SELECT role_id FROM t_user_role WHERE user_id = ? \n" +
                 ")\n" +
-                ")\n";
+                ")\n";*/
+        // 优化后的sql
+        String sql = " SELECT p.* FROM  t_user AS u\n" +
+                "  LEFT JOIN t_user_role AS ur\n" +
+                "    ON u.id = ur.user_id\n" +
+                "  LEFT JOIN t_role AS r\n" +
+                "    ON r.id = ur.role_id\n" +
+                "  LEFT JOIN t_role_permission AS rp\n" +
+                "    ON r.id = rp.role_id\n" +
+                "  LEFT JOIN t_permission AS p\n" +
+                "    ON p.id = rp.permission_id\n" +
+                "WHERE u.id = ?";
         List<T_permission> permissionsList = jdbcTemplate.query(sql, new Object[]{userId}, new BeanPropertyRowMapper<>(T_permission.class));
       /*  List<String> permissions = new ArrayList<>();
         permissionsList.forEach(c -> permissions.add(c.getCode()));*/
